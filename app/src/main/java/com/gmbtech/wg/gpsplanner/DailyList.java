@@ -93,6 +93,9 @@ public class DailyList extends Fragment {
 
     }  */
     }
+    }
+    }
 }
+
 
 
