@@ -19,7 +19,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".DailyList"
+            android:name=".NavMenu"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,14 +35,8 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".GPSMap"
-            android:label="@string/title_activity_gpsmap" >
-        </activity>
-        <activity
-            android:name=".NavMenu"
-            android:label="@string/title_activity_nav_menu" >
-        </activity>
+
+
     </application>
 
 </manifest>

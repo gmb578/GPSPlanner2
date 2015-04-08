@@ -1,28 +1,32 @@
 package com.gmbtech.wg.gpsplanner;
 
-import android.support.v4.app.FragmentActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class GPSMap extends FragmentActivity {
+public class GPSMap extends Fragment {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gpsmap);
-        setUpMapIfNeeded();
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.activity_gpsmap, container,false);
+        return v;
+
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
-        setUpMapIfNeeded();
+//        setUpMapIfNeeded();
     }
 
     /**
@@ -40,7 +44,7 @@ public class GPSMap extends FragmentActivity {
      * stopped or paused), {@link #onCreate(Bundle)} may not be called again so we should call this
      * method in {@link #onResume()} to guarantee that it will be called.
      */
-    private void setUpMapIfNeeded() {
+    /*private void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
@@ -52,7 +56,7 @@ public class GPSMap extends FragmentActivity {
             }
         }
     }
-
+*\
     /**
      * This is where we can add markers or lines, add listeners or move the camera. In this case, we
      * just add a marker near Africa.
