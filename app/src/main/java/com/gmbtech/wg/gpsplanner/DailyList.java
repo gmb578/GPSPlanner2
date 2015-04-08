@@ -3,10 +3,8 @@ package com.gmbtech.wg.gpsplanner;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -21,19 +19,23 @@ public class DailyList extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_daily_list, container, false);
         return v;
+    }
 
-        EditText editText = (EditText) getView().findViewById(R.id.editTask1);
+
+
+
+  /*      EditText editText = (EditText) getView().findViewById(R.id.editTask1);
         editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 boolean handled = false;
                 if (actionId == EditorInfo.IME_ACTION_SEND) {
-                    sendMessage();
+
                     handled = true;
                 }
                 return handled;
 
-    }
+    }*/
 
     /*
         @Override
@@ -43,7 +45,8 @@ public class DailyList extends Fragment {
             return true;
         }
     */
-    @Override
+
+  /*  @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -57,7 +60,7 @@ public class DailyList extends Fragment {
 
         return super.onOptionsItemSelected(item);
     }
-
+*/
     //Setting Data with checkboxes -Bolger 4/7/15
 
     public void onCheckboxClicked(View view) {
@@ -92,9 +95,10 @@ public class DailyList extends Fragment {
 
 
     }  */
-    }
-    }
-    }
+             }
+     /*   });
+    return v; } */
+
 }
 
 

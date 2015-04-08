@@ -56,13 +56,13 @@ public class NavMenu extends ActionBarActivity
 
             case 1:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, new GPSMap())
+                        .replace(R.id.container, new Calendar())
                         .commit();
                 break;
 
             case 2:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, new TestFrag())
+                        .replace(R.id.container, new GPSMap())
                         .commit();
                 break;
 
