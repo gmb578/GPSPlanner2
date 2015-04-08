@@ -1,30 +1,28 @@
 package com.gmbtech.wg.gpsplanner;
 
-
-
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.CheckBox;
 
 
-public class DailyList extends Fragment {
+public class DailyList extends ActionBarActivity {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.activity_daily_list, container,false);
-        return v;
-
-
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_daily_list);
     }
 
 
-
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_daily_list, menu);
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -40,4 +38,25 @@ public class DailyList extends Fragment {
 
         return super.onOptionsItemSelected(item);
     }
+
+    //Setting Data with checkboxes -Bolger 4/7/15
+
+    public void onCheckboxClicked(View view) {
+        boolean checked = ((CheckBox) view).isChecked();
+
+        switch(view.getId()){
+            case R.id.checkBox1:
+                if (checked)
+
+                else
+
+            break;
+        }
+
+
+
+
+    }
 }
+
+
