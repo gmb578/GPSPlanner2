@@ -27,10 +27,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".NavList"
-            android:label="@string/title_activity_nav_list" >
-        </activity>
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -42,6 +38,10 @@
         <activity
             android:name=".GPSMap"
             android:label="@string/title_activity_gpsmap" >
+        </activity>
+        <activity
+            android:name=".NavMenu"
+            android:label="@string/title_activity_nav_menu" >
         </activity>
     </application>
 

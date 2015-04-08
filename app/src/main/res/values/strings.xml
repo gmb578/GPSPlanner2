@@ -21,6 +21,7 @@
     <string name="navigation_drawer_Map">Open Map</string>
     <string name="navigation_drawer_DailyList">Open Daily List</string>
     <string name="navigation_drawer_Settings">Open Settings</string>
+    <string name="title_activity_nav_menu">NavMenu</string>
 
 
 </resources>
