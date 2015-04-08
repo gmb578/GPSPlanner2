@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">GPSPlanner</string>
 
+    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_nav_list">NavList</string>
 
@@ -14,14 +15,13 @@
     <string name="action_example">Example action</string>
     <string name="title_activity_gpsmap">Map</string>
 
+    <!-- Strings for Daily List -->
 
-    /*Section containing strings for navigation list
-    AG, 4/7/15 *\
-    <string name="navigation_drawer_Calendar">Open Calendar</string>
-    <string name="navigation_drawer_Map">Open Map</string>
-    <string name="navigation_drawer_DailyList">Open Daily List</string>
-    <string name="navigation_drawer_Settings">Open Settings</string>
-    <string name="title_activity_nav_menu">NavMenu</string>
+    <string name="editTask">Enter a Task</string>
+    <string name="checkBox">Add</string>
+
+
+
 
 
 </resources>
