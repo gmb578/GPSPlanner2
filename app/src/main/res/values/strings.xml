@@ -14,4 +14,14 @@
 
     <string name="action_example">Example action</string>
     <string name="title_activity_gpsmap">Map</string>
+
+    <!-- Strings for Daily List -->
+
+    <string name="editTask">Enter a Task</string>
+    <string name="checkBox">Add</string>
+
+
+
+
+
 </resources>

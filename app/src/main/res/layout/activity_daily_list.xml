@@ -15,11 +15,12 @@
         android:clickable="true"
         android:enabled="true"
         android:editable="true"
-        android:hint="Enter a Task"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:hint="@string/editTask"
+        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/checkBox1"
+        android:layout_toEndOf="@+id/checkBox1" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -30,12 +31,12 @@
         android:clickable="true"
         android:enabled="true"
         android:editable="true"
-        android:hint="Enter a Task"
+        android:hint="@string/editTask"
         android:layout_below="@+id/editTask1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/editTask1"
-        android:layout_alignEnd="@+id/editTask1" />
+        android:layout_alignEnd="@+id/editTask1"
+        android:layout_toRightOf="@+id/checkBox2"
+        android:layout_toEndOf="@+id/checkBox2" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -46,12 +47,12 @@
         android:clickable="true"
         android:enabled="true"
         android:editable="true"
-        android:hint="Enter a Task"
+        android:hint="@string/editTask"
         android:layout_below="@+id/editTask2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/editTask2"
-        android:layout_alignEnd="@+id/editTask2" />
+        android:layout_alignEnd="@+id/editTask2"
+        android:layout_toRightOf="@+id/checkBox3"
+        android:layout_toEndOf="@+id/checkBox3" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -62,12 +63,12 @@
         android:clickable="true"
         android:enabled="true"
         android:editable="true"
-        android:hint="Enter a Task"
+        android:hint="@string/editTask"
         android:layout_below="@+id/editTask3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/editTask3"
-        android:layout_alignEnd="@+id/editTask3" />
+        android:layout_alignEnd="@+id/editTask3"
+        android:layout_alignLeft="@+id/editTask3"
+        android:layout_alignStart="@+id/editTask3" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -78,11 +79,66 @@
         android:clickable="true"
         android:enabled="true"
         android:editable="true"
-        android:hint="Enter a Task"
+        android:hint="@string/editTask"
         android:layout_below="@+id/editTask4"
+        android:layout_alignRight="@+id/editTask4"
+        android:layout_alignEnd="@+id/editTask4"
+        android:layout_alignLeft="@+id/editTask4"
+        android:layout_alignStart="@+id/editTask4" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkBox"
+        android:id="@+id/checkBox1"
+        android:checked="false"
+        android:layout_alignTop="@+id/editTask1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/editTask4"
-        android:layout_alignEnd="@+id/editTask4" />
+        android:layout_above="@+id/editTask2" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkBox"
+        android:id="@+id/checkBox2"
+        android:checked="false"
+        android:layout_below="@+id/editTask1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/editTask2" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkBox"
+        android:id="@+id/checkBox3"
+        android:checked="false"
+        android:layout_alignTop="@+id/editTask3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/editTask4" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkBox"
+        android:id="@+id/checkBox4"
+        android:checked="false"
+        android:layout_below="@+id/editTask3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/editTask4" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkBox"
+        android:id="@+id/checkBox5"
+        android:checked="false"
+        android:layout_alignTop="@+id/editTask5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/editTask5" />
 
 </RelativeLayout>
