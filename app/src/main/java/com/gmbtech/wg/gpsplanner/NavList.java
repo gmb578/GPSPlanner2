@@ -143,6 +143,8 @@ public class NavList extends ActionBarActivity
             super.onAttach(activity);
             ((NavList) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
+
+
         }
     }
 
