@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+////Gemberling 4/8/15, Created as Activity, converted to fragment
 
 /**
  * A simple {@link Fragment} subclass.

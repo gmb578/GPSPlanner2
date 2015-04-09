@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by WG on 4/8/2015.
+ * Gemberling 4/8/15, Testing Addition of Fragments to NavMenu
  */
 public class TestFrag  extends Fragment {
 
