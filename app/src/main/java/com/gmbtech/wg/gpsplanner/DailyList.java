@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -19,6 +20,14 @@ public class DailyList extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_daily_list, container, false);
+        CheckBox cb1 = (CheckBox) v.findViewById(R.id.checkBox1);
+        final TextView tv1 = (TextView) v.findViewById(R.id.editTask1);
+        cb1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                tv1.setText("Checked is " + isChecked);
+            }
+        });
         return v;
     }
 
@@ -64,43 +73,12 @@ public class DailyList extends Fragment {
 */
     //Setting Data with checkboxes -Bolger 4/7/15
 
-    public void onCheckboxClicked(View view) {
-
-        boolean checked = ((CheckBox) view).isChecked();
-
- /*      switch(view.getId()){
-            case R.id.checkBox1:
-                if (checked){
-                    View v = inflater.inflate(R.layout.activity_daily_list);
-
-                    EditText editText = (EditText) findViewById(R.id.editTask1);
-                    editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-                        @Override
-                        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                            boolean handled = false;
-                            if (actionId == EditorInfo.IME_ACTION_SEND) {
-                                sendMessage();
-                                handled = true;
-                            }
-                            return handled;
-                        }
-                    });
-                }
-
-                else
-
-            break;
-        }
 
 
 
+    }
 
-    }  */
-             }
-     /*   });
-    return v; } */
 
-}
 
 
 
