@@ -21,7 +21,7 @@ public class GPSMap extends SupportMapFragment{
 
     private GoogleMap mMap;
     private Context mContext;
-    private FollowMeLocationSource followMeLocationSource;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -31,7 +31,26 @@ public class GPSMap extends SupportMapFragment{
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         mMap.setMyLocationEnabled(true);
         mContext = getActivity();
-        followMeLocationSource = new FollowMeLocationSource();
+        LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+        criteria.setAccuracy(Criteria.ACCURACY_FINE);
+
+        Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
+        if (location != null)
+        {
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                    new LatLng(location.getLatitude(), location.getLongitude()), 13));
+
+            CameraPosition cameraPosition = new CameraPosition.Builder()
+                    .target(new LatLng(location.getLatitude(), location.getLongitude()))      // Sets the center of the map to location user
+                    .zoom(19)                   // Sets the zoom
+                    .tilt(20)                   // Sets the tilt of the camera to 30 degrees
+                    .bearing(90)                // Sets the direction of the camera to east
+                    .build();                   // Creates a CameraPosition from the builder
+            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+        }
+
 
         return v;
     }
@@ -49,94 +68,7 @@ public class GPSMap extends SupportMapFragment{
 
     }
 
-    /* Our custom LocationSource.
-  * We register this class to receive location updates from the Location Manager
-  * and for that reason we need to also implement the LocationListener interface. */
-    private class FollowMeLocationSource implements LocationSource, LocationListener {
 
-        private OnLocationChangedListener mListener;
-        private LocationManager locationManager;
-        private final Criteria criteria = new Criteria();
-        private String bestAvailableProvider;
-        /* Updates are restricted to one every 10 seconds, and only when
-         * movement of more than 10 meters has been detected.*/
-        private final int minTime = 10000;     // minimum time interval between location updates, in milliseconds
-        private final int minDistance = 10;    // minimum distance between location updates, in meters
-
-        private FollowMeLocationSource() {
-            // Get reference to Location Manager
-            locationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
-
-            // Specify Location Provider criteria
-            criteria.setAccuracy(Criteria.ACCURACY_LOW);
-            criteria.setPowerRequirement(Criteria.POWER_LOW);
-            criteria.setAltitudeRequired(true);
-            criteria.setBearingRequired(true);
-            criteria.setSpeedRequired(true);
-            criteria.setCostAllowed(true);
-        }
-
-        private void getBestAvailableProvider() {
-            /* The preferred way of specifying the location provider (e.g. GPS, NETWORK) to use
-             * is to ask the Location Manager for the one that best satisfies our criteria.
-             * By passing the 'true' boolean we ask for the best available (enabled) provider. */
-            bestAvailableProvider = locationManager.getBestProvider(criteria, true);
-        }
-
-        /* Activates this provider. This provider will notify the supplied listener
-         * periodically, until you call deactivate().
-         * This method is automatically invoked by enabling my-location layer. */
-        @Override
-        public void activate(OnLocationChangedListener listener) {
-            // We need to keep a reference to my-location layer's listener so we can push forward
-            // location updates to it when we receive them from Location Manager.
-            mListener = listener;
-
-            // Request location updates from Location Manager
-            if (bestAvailableProvider != null) {
-                locationManager.requestLocationUpdates(bestAvailableProvider, minTime, minDistance, (android.location.LocationListener) this);
-            } else {
-                // (Display a message/dialog) No Location Providers currently available.
-            }
-        }
-
-        /* Deactivates this provider.
-         * This method is automatically invoked by disabling my-location layer. */
-        @Override
-        public void deactivate() {
-            // Remove location updates from Location Manager
-            locationManager.removeUpdates((android.location.LocationListener) this);
-
-            mListener = null;
-        }
-
-        @Override
-        public void onLocationChanged(Location location) {
-            /* Push location updates to the registered listener..
-             * (this ensures that my-location layer will set the blue dot at the new/received location) */
-            if (mListener != null) {
-                mListener.onLocationChanged(location);
-            }
-
-        UpdateUI(location.getLatitude(), location.getLongitude());
-
-        }
-
-
-        public void onStatusChanged(String s, int i, Bundle bundle) {
-
-        }
-
-
-        public void onProviderEnabled(String s) {
-
-        }
-
-
-        public void onProviderDisabled(String s) {
-
-        }
-    }
 
 }
 
