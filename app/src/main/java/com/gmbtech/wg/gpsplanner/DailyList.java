@@ -1,5 +1,6 @@
 package com.gmbtech.wg.gpsplanner;
 
+import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -13,6 +14,9 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.*;
+
+
 
 public class DailyList extends Fragment {
 
@@ -25,11 +29,24 @@ public class DailyList extends Fragment {
         cb1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                tv1.setText("Checked is " + isChecked);
+                String FILENAME = "task";
+                String string = (String) tv1.getText();
+
+                FileOutputStream os = openFileOutput(FILENAME, Context.MODE_PRIVATE);
+                try {
+                    os.write(string.getBytes());
+                    os.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                tv1.setText("You saved the fucking task.");
             }
         });
         return v;
     }
+
+
 
 
 
