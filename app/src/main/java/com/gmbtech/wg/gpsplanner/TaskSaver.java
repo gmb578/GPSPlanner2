@@ -25,7 +25,7 @@ public class TaskSaver {
 	}
 
 	public void addTask(Task task){
-		Log.i("TaskSaver","Added task");
+		Log.i("TaskSaver","Added task: " + task.getTitle());
 		mTasks.add(task);
 	}
 

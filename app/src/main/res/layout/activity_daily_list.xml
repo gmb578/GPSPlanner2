@@ -1,13 +1,11 @@
 <!-- 4/7/15 Mike Bolger - Creating lines to input data -->
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
         <ListView
             android:id="@+id/lv_daily_list_main"
@@ -19,8 +17,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/new_task"
-            android:id="@+id/button"
-            android:layout_marginBottom="29dp"/>
-    </LinearLayout>
-</ScrollView>
+            android:id="@+id/button"/>
 
+</LinearLayout>

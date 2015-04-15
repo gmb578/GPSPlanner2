@@ -67,6 +67,7 @@ public class TaskDialog extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
 						TaskSaver.getInstance(getActivity()).addTask(new Task(etTask.getText().toString(), mLocation));
                         mListener.onDialogPositiveClick(TaskDialog.this);
+						((NavMenu)getActivity()).onNavigationDrawerItemSelected(0);
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
