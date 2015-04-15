@@ -69,11 +69,14 @@ public class GPSMap extends SupportMapFragment {
                 // Placing a marker on the touched position
                 mMap.addMarker(markerOptions);
 
-                openDialog();
+                openDialog(latLng);
             }
 
-            public void openDialog() {
-                DialogFragment newFragment = new TaskDialog();
+            public void openDialog(LatLng latLng) {
+				Location l = new Location("");
+				l.setLatitude(latLng.latitude);
+				l.setLongitude(latLng.longitude);
+                DialogFragment newFragment = new TaskDialog(l);
                 newFragment.show(getActivity().getFragmentManager(), "Task");
 
             }

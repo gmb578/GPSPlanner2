@@ -1,21 +1,26 @@
 package com.gmbtech.wg.gpsplanner;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
-import java.io.*;
-
+import java.util.ArrayList;
 
 
 public class DailyList extends Fragment {
@@ -24,72 +29,71 @@ public class DailyList extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_daily_list, container, false);
-        CheckBox cb1 = (CheckBox) v.findViewById(R.id.checkBox1);
-        final TextView tv1 = (TextView) v.findViewById(R.id.editTask1);
-        cb1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                String FILENAME = "task";
-                String string = (String) tv1.getText();
+		ListView listView = (ListView) v.findViewById(R.id.lv_daily_list_main);
+		ArrayList<Task> taskArrayList = TaskSaver.getInstance(getActivity()).getTasks();
+		listView.setAdapter(new TaskAdapter(getActivity(), R.layout.task_item, taskArrayList));
 
-                FileOutputStream os = openFileOutput(FILENAME, Context.MODE_PRIVATE);
-                try {
-                    os.write(string.getBytes());
-                    os.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                tv1.setText("You saved the fucking task.");
-            }
-        });
         return v;
     }
 
+	public class TaskAdapter extends ArrayAdapter<Task> {
+
+		Context context;
+		int layoutResourceId;
+		ArrayList<Task> data= null;
+
+		public TaskAdapter(Context context, int layoutResourceId, ArrayList<Task> data) {
+			super(context, layoutResourceId, data);
+			this.layoutResourceId = layoutResourceId;
+			this.context = context;
+			this.data = data;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			View row = convertView;
+			TaskHolder holder = null;
+
+			if(row == null)
+			{
+				LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+				row = inflater.inflate(layoutResourceId, parent, false);
+
+				holder = new TaskHolder();
+
+				row.setTag(holder);
+			}
+			else
+			{
+				holder = (TaskHolder)row.getTag();
+			}
+
+			final Task task = data.get(position);
+			EditText editText = (EditText) row.findViewById(R.id.et_task_item);
+			editText.setText(task.getTitle());
+			editText.addTextChangedListener(new TextWatcher() {
+				@Override
+				public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+				@Override
+				public void onTextChanged(CharSequence s, int start, int before, int count) {
+					task.setTitle(s.toString());
+				}
+
+				@Override
+				public void afterTextChanged(Editable s) {}
+			});
 
 
+			return row;
+		}
 
-
-
-  /*      EditText editText = (EditText) getView().findViewById(R.id.editTask1);
-        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                boolean handled = false;
-                if (actionId == EditorInfo.IME_ACTION_SEND) {
-
-                    handled = true;
-                }
-                return handled;
-
-    }*/
-
-    /*
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.menu_daily_list, menu);
-            return true;
-        }
-    */
-
-  /*  @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-*/
-    //Setting Data with checkboxes -Bolger 4/7/15
-
+		class TaskHolder
+		{
+			ImageView imgIcon;
+			TextView txtTitle;
+		}
+	}
 
 
 

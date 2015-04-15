@@ -5,8 +5,11 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
@@ -26,6 +29,11 @@ public class TaskDialog extends DialogFragment {
 
     // Use this instance of the interface to deliver action events
     NoticeDialogListener mListener;
+	Location mLocation;
+
+	public TaskDialog(Location location){
+		mLocation = location;
+	}
 
     // Override the Fragment.onAttach() method to instantiate the NoticeDialogListener
     @Override
@@ -49,12 +57,15 @@ public class TaskDialog extends DialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
         //Inflate Layout and add title/buttons
+		View v = inflater.inflate(R.layout.layout_taskdialog, null);
+		final EditText etTask = (EditText)  v.findViewById(R.id.task);
 
-        builder.setView(inflater.inflate(R.layout.layout_taskdialog, null))
+        builder.setView(v)
                 .setTitle(R.string.dialog_task)
 
                 .setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+						TaskSaver.getInstance(getActivity()).addTask(new Task(etTask.getText().toString(), mLocation));
                         mListener.onDialogPositiveClick(TaskDialog.this);
                     }
                 })
@@ -64,6 +75,8 @@ public class TaskDialog extends DialogFragment {
                     }
 
                 });
+
+
         return builder.create();
     }
 }

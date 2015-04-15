@@ -1,36 +1,26 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<!-- 4/7/15 Mike Bolger - Creating lines to input data -->
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".DailyList">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- 4/7/15 Mike Bolger - Creating lines to input data -->
-
-    <EditText
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:id="@+id/editTask5"
-        android:clickable="true"
-        android:enabled="true"
-        android:editable="true"
-        android:hint="@string/editTask"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:orientation="vertical">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Task"
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="29dp" />
+        <ListView
+            android:id="@+id/lv_daily_list_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/new_task"
+            android:id="@+id/button"
+            android:layout_marginBottom="29dp"/>
+    </LinearLayout>
+</ScrollView>
 
-</RelativeLayout>
