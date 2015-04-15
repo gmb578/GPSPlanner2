@@ -22,8 +22,11 @@
     <string name="title_calendar">Calendar</string>
     <string name="title_map">Map</string>
     <string name="title_dailylist">Daily List</string>
-
-
+    <string name="title_activity_maps">Map</string>
+    <string name="dialog_task">Please enter a task for this location</string>
+    <string name="dialog_ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="task">Your task</string>
 
 
 </resources>
