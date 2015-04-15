@@ -11,8 +11,8 @@
 
     <!-- Strings for Daily List -->
 
-    <string name="editTask">Enter a Task</string>
-    <string name="checkBox">Add</string>
+    <string name="editTask">Task</string>
+
 
     <!-- Strings for NavMenu -->
     <string name="title_settings">Settings</string>
