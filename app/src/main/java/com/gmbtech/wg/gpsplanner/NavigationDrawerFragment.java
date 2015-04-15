@@ -106,8 +106,8 @@ public class NavigationDrawerFragment extends Fragment {
                 android.R.id.text1,
                 new String[]{
                         getString(R.string.title_dailylist),
-                        getString(R.string.title_calendar),
                         getString(R.string.title_map),
+                        "Settings"
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;

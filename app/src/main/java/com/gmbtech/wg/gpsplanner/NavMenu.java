@@ -1,6 +1,8 @@
 package com.gmbtech.wg.gpsplanner;
 
 import android.app.Activity;
+import android.app.DialogFragment;
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -11,12 +13,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-
-
+import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class NavMenu extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, TaskDialog.NoticeDialogListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -41,6 +43,8 @@ public class NavMenu extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+
     }
 
     @Override
@@ -56,15 +60,10 @@ public class NavMenu extends ActionBarActivity
 
             case 1:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, new Calendar())
-                        .commit();
-                break;
-
-            case 2:
-                fragmentManager.beginTransaction()
                         .replace(R.id.container, new GPSMap())
                         .commit();
                 break;
+
 
             default:
 
@@ -81,9 +80,6 @@ public class NavMenu extends ActionBarActivity
                 mTitle = getString(R.string.title_dailylist);
                 break;
             case 2:
-                mTitle = getString(R.string.title_calendar);
-                break;
-            case 3:
                 mTitle = getString(R.string.title_map);
                 break;
         }
@@ -96,20 +92,7 @@ public class NavMenu extends ActionBarActivity
         actionBar.setTitle(mTitle);
     }
 
-/*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        if (!mNavigationDrawerFragment.isDrawerOpen()) {
-            // Only show items in the action bar relevant to this screen
-            // if the drawer is not showing. Otherwise, let the drawer
-            // decide what to show in the action bar.
-//            getMenuInflater().inflate(R.menu.nav_menu, menu);
-            restoreActionBar();
-            return true;
-        }
-        return super.onCreateOptionsMenu(menu);
-    }
-*/
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -125,10 +108,24 @@ public class NavMenu extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+
+
+
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+
+    }
+
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    class PlaceholderFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -164,4 +161,4 @@ public class NavMenu extends ActionBarActivity
         }
     }
 
-}
+

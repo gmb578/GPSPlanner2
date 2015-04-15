@@ -1,23 +1,20 @@
 package com.gmbtech.wg.gpsplanner;
 
+import android.app.DialogFragment;
 import android.content.Context;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.model.*;
-import android.os.Bundle;
 
-public class GPSMap extends SupportMapFragment{
+
+public class GPSMap extends SupportMapFragment {
 
     private GoogleMap mMap;
     private Context mContext;
@@ -36,8 +33,7 @@ public class GPSMap extends SupportMapFragment{
         criteria.setAccuracy(Criteria.ACCURACY_FINE);
 
         Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
-        if (location != null)
-        {
+        if (location != null) {
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
                     new LatLng(location.getLatitude(), location.getLongitude()), 13));
 
@@ -72,28 +68,24 @@ public class GPSMap extends SupportMapFragment{
 
                 // Placing a marker on the touched position
                 mMap.addMarker(markerOptions);
+
+                openDialog();
             }
+
+            public void openDialog() {
+                DialogFragment newFragment = new TaskDialog();
+                newFragment.show(getActivity().getFragmentManager(), "Task");
+
+            }
+
+
         });
 
         return v;
     }
-
-
-    public void UpdateUI(double lat, double lng) {
-        //get bounding box
-        Display display = getActivity().getWindowManager().getDefaultDisplay();
-        LatLngBounds.Builder latlngBuilder = new LatLngBounds.Builder();
-        latlngBuilder.include(new LatLng(lat, lng));
-        LatLngBounds latLngBounds = latlngBuilder.build();
-        CameraUpdate movement = CameraUpdateFactory.newLatLngBounds(latLngBounds,
-                display.getWidth(), display.getHeight(), 15);
-        mMap.moveCamera(movement);
-
-    }
-
-
-
 }
+
+
 
 
 
