@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/new_task"
-            android:id="@+id/button"/>
+            android:id="@+id/button"
+            android:onClick="onClickBtn"/>
 
 </LinearLayout>

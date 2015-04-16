@@ -25,9 +25,7 @@ public class NavMenu extends ActionBarActivity
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
-    /**
-     * Used to store the last screen title. For use in {@link #restoreActionBar()}.
-     */
+
     private CharSequence mTitle;
 
     @Override
@@ -85,11 +83,13 @@ public class NavMenu extends ActionBarActivity
         }
     }
 
-    public void restoreActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
+    public void onClickBtn(View v) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, new GPSMap())
+                .commit();
+
+
     }
 
 
@@ -108,10 +108,9 @@ public class NavMenu extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
+
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
-
-
 
     }
 
@@ -119,9 +118,8 @@ public class NavMenu extends ActionBarActivity
     public void onDialogNegativeClick(DialogFragment dialog) {
 
     }
-
-    }
-
+}
+/*
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -144,8 +142,6 @@ public class NavMenu extends ActionBarActivity
             return fragment;
         }
 
-        public PlaceholderFragment() {
-        }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -159,6 +155,7 @@ public class NavMenu extends ActionBarActivity
             ((NavMenu) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
+
     }
 
 
